@@ -9,12 +9,19 @@ THEMES = %w(
   darkly
   flatly
   journal
+  litera
   lumen
+  lux
+  materia
+  minty
   paper
+  pulse
   readable
   sandstone
   simplex
+  sketchy
   slate
+  solar
   spacelab
   superhero
   united
