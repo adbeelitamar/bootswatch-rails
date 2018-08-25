@@ -1,294 +1,253 @@
-// Lumen 3.3.5
+// Lumen 4.1.3
 // Bootswatch
-// -----------------------------------------------------
 
-@import url("//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,400italic");
 
-@mixin shadow($width: 4px) {
+// Variables ===================================================================
+
+$web-font-path: "https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,400italic" !default;
+@import url($web-font-path);
+
+@mixin shadow($width: 4px){
+  border-style: solid;
   border-width: 0 1px $width 1px;
 }
 
-// Navbar =====================================================================
+// Navbar ======================================================================
 
-.navbar  {
+.navbar {
   @include shadow();
 }
 
-// Buttons ====================================================================
+.bg-primary {
+  border-color: darken($primary, 5%);
+}
+
+.bg-dark {
+  border-color: darken($dark, 5%);
+}
+
+.bg-light {
+  background-color: #fff !important;
+  border-color: darken(#fff, 5%);
+}
+
+// Buttons =====================================================================
 
 .btn {
-  padding: ($padding-base-vertical + 2) $padding-base-horizontal $padding-base-vertical;
   @include shadow();
   font-size: 12px;
   font-weight: bold;
   text-transform: uppercase;
 
-  &:hover {
+  &:not(.disabled):hover {
     margin-top: 1px;
     border-bottom-width: 3px;
   }
 
-  &:active {
+  &:not(.disabled):active {
     margin-top: 2px;
     border-bottom-width: 2px;
     @include box-shadow(none);
   }
 }
 
-.btn-lg,
-.btn-group-lg > .btn {
-  padding: ($padding-large-vertical + 2) $padding-large-horizontal $padding-large-vertical;
-  line-height: 15px;
+[class*="btn-outline"] {
+  border-top-width: 1px;
 }
 
-.btn-sm,
-.btn-group-sm > .btn {
-  padding: ($padding-small-vertical + 2) $padding-small-horizontal $padding-small-vertical;
-}
-
-.btn-xs,
-.btn-group-xs > .btn {
-  padding: ($padding-xs-vertical + 2) $padding-xs-horizontal $padding-xs-vertical;
-}
-
-.btn-default:hover,
-.btn-default:focus,
-.btn-group.open .dropdown-toggle.btn-default {
-  background-color: $btn-default-bg;
-  border-color: $btn-default-border;
-}
-
-.btn-primary:hover,
-.btn-primary:focus,
-.btn-group.open .dropdown-toggle.btn-primary {
-  background-color: $btn-primary-bg;
-  border-color: $btn-primary-border;
-}
-
-.btn-success:hover,
-.btn-success:focus,
-.btn-group.open .dropdown-toggle.btn-success {
-  background-color: $btn-success-bg;
-  border-color: $btn-success-border;
-}
-
-.btn-info:hover,
-.btn-info:focus,
-.btn-group.open .dropdown-toggle.btn-info {
-  background-color: $btn-info-bg;
-  border-color: $btn-info-border;
-}
-
-.btn-warning:hover,
-.btn-warning:focus,
-.btn-group.open .dropdown-toggle.btn-warning {
-  background-color: $btn-warning-bg;
-  border-color: $btn-warning-border;
-}
-
-.btn-danger:hover,
-.btn-danger:focus,
-.btn-group.open .dropdown-toggle.btn-danger {
-  background-color: $btn-danger-bg;
-  border-color: $btn-danger-border;
-}
-
-.btn-group.open .dropdown-toggle {
-  @include box-shadow(none);
-}
-
-.navbar-btn {
-  &:hover {
-    margin-top: 8px
+.btn {
+  &-primary {
+    border-color: darken($primary, 5%);
   }
 
-  &:active {
-    margin-top: 9px
+  &-secondary {
+    border-color: darken($secondary, 5%);
   }
 
-  &.btn-sm {
-    &:hover {
-      margin-top: 11px
-    }
-
-    &:active {
-      margin-top: 12px
-    }
+  &-success {
+    border-color: darken($success, 5%);
   }
 
-  &.btn-xs {
-    &:hover {
-      margin-top: 15px
-    }
+  &-info {
+    border-color: darken($info, 5%);
+    color: $white;
+  }
 
-    &:active {
-      margin-top: 16px
-    }
+  &-danger {
+    border-color: darken($danger, 5%);
+  }
+
+  &-warning {
+    border-color: darken($warning, 5%);
+    color: $white;
+  }
+
+  &-light {
+    border-color: darken($light, 5%);
+  }
+
+  &-dark {
+    border-color: darken($dark, 5%);
   }
 }
 
 .btn-group-vertical {
   .btn + .btn {
     &:hover {
+      margin-top: -1px;
       border-top-width: 1px;
     }
 
     &:active {
+      margin-top: -1px;
       border-top-width: 2px;
     }
   }
 }
 
-// Typography =================================================================
+// Typography ==================================================================
 
-.text-primary,
-.text-primary:hover {
-  color: $brand-primary;
+.blockquote-footer {
+  color: $gray-600;
 }
 
-.text-success,
-.text-success:hover {
-  color: $brand-success;
-}
+// Tables ======================================================================
 
-.text-danger,
-.text-danger:hover {
-  color: $brand-danger;
-}
-
-.text-warning,
-.text-warning:hover {
-  color: $brand-warning;
-}
-
-.text-info,
-.text-info:hover {
-  color: $brand-info;
-}
-
-// Tables =====================================================================
-
-table,
 .table {
 
-  a:not(.btn) {
-    text-decoration: underline;
-  }
-
-  .dropdown-menu a {
-    text-decoration: none;
-  }
-
-  .success,
-  .warning,
-  .danger,
-  .info {
+  &-primary,
+  &-success,
+  &-info,
+  &-warning,
+  &-danger {
     color: #fff;
+  }
 
-    a:not(.btn) {
-      color: #fff;
+  .thead-dark th {
+    background-color: $primary;
+    border-color: $primary;
+  }
+
+  &-primary {
+    &, > th, > td {
+      background-color: $primary;
     }
   }
 
-  > thead > tr > th,
-  > tbody > tr > th,
-  > tfoot > tr > th,
-  > thead > tr > td,
-  > tbody > tr > td,
-  > tfoot > tr > td {
-    border-color: transparent;
+  &-secondary {
+    &, > th, > td {
+      background-color: $secondary;
+    }
+  }
+
+  &-light {
+    &, > th, > td {
+      background-color: $light;
+    }
+  }
+
+  &-dark {
+    &, > th, > td {
+      background-color: $dark;
+    }
+  }
+
+  &-success {
+    &, > th, > td {
+      background-color: $success;
+    }
+  }
+
+  &-info {
+    &, > th, > td {
+      background-color: $info;
+    }
+  }
+
+  &-danger {
+    &, > th, > td {
+      background-color: $danger;
+    }
+  }
+
+  &-warning {
+    &, > th, > td {
+      background-color: $warning;
+    }
+  }
+
+  &-active {
+    &, > th, > td {
+      background-color: $table-active-bg;
+    }
+  }
+
+  &-hover {
+
+    .table-primary:hover {
+      &, > th, > td {
+        background-color: darken($primary, 5%);
+      }
+    }
+
+    .table-secondary:hover {
+      &, > th, > td {
+        background-color: darken($secondary, 5%);
+      }
+    }
+
+    .table-light:hover {
+      &, > th, > td {
+        background-color: darken($light, 5%);
+      }
+    }
+
+    .table-dark:hover {
+      &, > th, > td {
+        background-color: darken($dark, 5%);
+      }
+    }
+
+    .table-success:hover {
+      &, > th, > td {
+        background-color: darken($success, 5%);
+      }
+    }
+
+    .table-info:hover {
+      &, > th, > td {
+        background-color: darken($info, 5%);
+      }
+    }
+
+    .table-danger:hover {
+      &, > th, > td {
+        background-color: darken($danger, 5%);
+      }
+    }
+
+    .table-warning:hover {
+      &, > th, > td {
+        background-color: darken($warning, 5%);
+      }
+    }
+
+    .table-active:hover {
+      &, > th, > td {
+        background-color: $table-active-bg;
+      }
+    }
+
   }
 }
 
-// Forms ======================================================================
+// Forms =======================================================================
 
 .form-control {
-  @include box-shadow(inset 0 2px 0 rgba(0, 0, 0, 0.075));
+  box-shadow: inset 0 2px 0 rgba(0, 0, 0, 0.075);
 }
 
-label {
-  font-weight: normal;
-}
-
-.has-warning {
-  .help-block,
-  .control-label,
-  .radio,
-  .checkbox,
-  .radio-inline,
-  .checkbox-inline,
-  &.radio label,
-  &.checkbox label,
-  &.radio-inline label,
-  &.checkbox-inline label,
-  .form-control-feedback {
-    color: $brand-warning;
-  }
-
-  .form-control,
-  .form-control:focus {
-    border: 1px solid $brand-warning;
-    @include box-shadow(inset 0 2px 0 rgba(0, 0, 0, 0.075));
-  }
-
-  .input-group-addon {
-    border: 1px solid $brand-warning;
-  }
-}
-
-.has-error {
-  .help-block,
-  .control-label,
-  .radio,
-  .checkbox,
-  .radio-inline,
-  .checkbox-inline,
-  &.radio label,
-  &.checkbox label,
-  &.radio-inline label,
-  &.checkbox-inline label,
-  .form-control-feedback {
-    color: $brand-danger;
-  }
-
-  .form-control,
-  .form-control:focus {
-    border: 1px solid $brand-danger;
-    @include box-shadow(inset 0 2px 0 rgba(0, 0, 0, 0.075));
-  }
-
-  .input-group-addon {
-    border: 1px solid $brand-danger;
-  }
-}
-
-.has-success {
-  .help-block,
-  .control-label,
-  .radio,
-  .checkbox,
-  .radio-inline,
-  .checkbox-inline,
-  &.radio label,
-  &.checkbox label,
-  &.radio-inline label,
-  &.checkbox-inline label,
-  .form-control-feedback {
-    color: $brand-success;
-  }
-
-  .form-control,
-  .form-control:focus {
-    border: 1px solid $brand-success;
-    @include box-shadow(inset 0 2px 0 rgba(0, 0, 0, 0.075));
-  }
-
-  .input-group-addon {
-    border: 1px solid $brand-success;
-  }
-}
-
-// Navs =======================================================================
+// Navs ========================================================================
 
 .nav {
   .open > a,
@@ -300,36 +259,25 @@ label {
 
 .nav-tabs {
 
-  > li > a {
-    margin-top: 6px;
-    border-color: $navbar-default-border;
-    color: $gray-dark;
-    @include transition(all 0.2s ease-in-out);
-  }
+  .nav-link {
+    color: $body-color;
 
-  > li > a:hover,
-  > li > a:focus,
-  > li.active > a,
-  > li.active > a:hover,
-  > li.active > a:focus,
-  .open > a,
-  .open > a:hover,
-  .open > a:focus {
-    padding-bottom: ($padding-large-vertical + 3);
-    margin-top: 0;
-  }
+    &,
+    &.disabled,
+    &.disabled:hover,
+    &.disabled:focus {
+      margin-top: 6px;
+      border-color: $nav-tabs-border-color;
+      transition: all 0.2s ease-in-out;
+    }
 
-  .open > a,
-  .open > a:hover,
-  .open > a:focus {
-    border-color: $navbar-default-border;
-  }
-
-  > li.disabled > a:hover,
-  > li.disabled > a:focus {
-    padding-top: 10px;
-    padding-bottom: 10px;
-    margin-top: 6px;
+    &:not(.disabled):hover,
+    &:not(.disabled):focus,
+    &.active {
+      padding-bottom: calc(0.5em + 6px);
+      border-bottom-color: transparent;
+      margin-top: 0;
+    }
   }
 
   &.nav-justified > li {
@@ -346,12 +294,10 @@ label {
 
 .breadcrumb {
   border-color: darken($breadcrumb-bg, 5%);
-  border-style: solid;
   @include shadow();
 }
 
-.pagination,
-.pager {
+.pagination {
 
   > li > a,
   > li > span {
@@ -363,9 +309,11 @@ label {
     font-weight: bold;
     text-transform: uppercase;
 
-    &:hover {
+    &:hover,
+    &:focus {
       top: 1px;
       border-bottom-width: 3px;
+      text-decoration: none;
     }
 
     &:active {
@@ -405,116 +353,138 @@ label {
   }
 }
 
-// Indicators =================================================================
+// Indicators ==================================================================
 
 .close {
-  color: #fff;
   text-decoration: none;
   opacity: 0.4;
 
   &:hover,
   &:focus {
-    color: #fff;
     opacity: 1;
   }
 }
 
 .alert {
+  color: $white;
   @include shadow();
+
+  &-primary {
+    background-color: $primary;
+    border-color: darken($primary, 5%);
+  }
+
+  &-secondary {
+    background-color: $secondary;
+    border-color: darken($secondary, 5%);
+  }
+
+  &-success {
+    background-color: $success;
+    border-color: darken($success, 5%);
+  }
+
+  &-info {
+    background-color: $info;
+    border-color: darken($info, 5%);
+  }
+
+  &-danger {
+    background-color: $danger;
+    border-color: darken($danger, 5%);
+  }
+
+  &-warning {
+    background-color: $warning;
+    border-color: darken($warning, 5%);
+  }
+
+  &-dark {
+    background-color: $dark;
+    border-color: darken($dark, 5%);
+  }
+
+  &-light {
+    background-color: $light;
+    border-color: darken($light, 5%);
+  }
 
   .alert-link {
     font-weight: normal;
     color: #fff;
     text-decoration: underline;
   }
+
+  &-secondary,
+  &-light {
+    &,
+    & a,
+    & .alert-link {
+      color: $body-color;
+    }
+  }
 }
 
-.label {
-  font-weight: normal;
+.badge {
+  &-warning,
+  &-info {
+    color: $white;
+  }
 }
 
-// Progress bars ==============================================================
+// Progress bars ===============================================================
 
-.progress {
-  border: 1px solid $navbar-default-border;
-  @include box-shadow(inset 0 2px 0 rgba(0, 0, 0, 0.1));
-}
-
-.progress-bar {
-  @include box-shadow(inset 0 -4px 0 rgba(0, 0, 0, 0.15));
-}
-
-// Containers =================================================================
-
-.well {
-  border: 1px solid $navbar-default-border;
-  @include box-shadow(inset 0 2px 0 rgba(0, 0, 0, 0.05));
-}
+// Containers ==================================================================
 
 a.list-group-item {
 
-  &.active,
-  &.active:hover,
-  &.active:focus {
-    border-color: $list-group-border;
-  }
-}
+  &-success {
+    &.active {
+      background-color: $success;
+    }
 
-a.list-group-item-success {
-  &.active {
-    background-color: $state-success-bg;
-  }
-
-  &.active:hover,
-  &.active:focus {
-    background-color: darken($state-success-bg, 5%);
-  }
-}
-
-a.list-group-item-warning {
-  &.active {
-    background-color: $state-warning-bg;
+    &.active:hover,
+    &.active:focus {
+      background-color: darken($success, 5%);
+    }
   }
 
-  &.active:hover,
-  &.active:focus {
-    background-color: darken($state-warning-bg, 5%);
+  &-warning {
+    &.active {
+      background-color: $warning;
+    }
+    
+    &.active:hover,
+    &.active:focus {
+      background-color: darken($warning, 5%);
+    }
   }
-}
 
-a.list-group-item-danger {
-  &.active {
-    background-color: $state-danger-bg;
-  }
-
-  &.active:hover,
-  &.active:focus {
-    background-color: darken($state-danger-bg, 5%);
+  &-danger {
+    &.active {
+      background-color: $danger;
+    }
+    
+    &.active:hover,
+    &.active:focus {
+      background-color: darken($danger, 5%);
+    }
   }
 }
 
 .jumbotron {
-  border: 1px solid $navbar-default-border;
-  @include box-shadow(inset 0 2px 0 rgba(0, 0, 0, 0.05));
-}
-
-.panel {
-  border: 1px solid $navbar-default-border;
-  @include shadow();
-}
-
-.panel-default {
-  .close {
-    color: $text-color;
-  }
+  border: 1px solid $gray-200;
+  box-shadow: inset 0 2px 0 rgba(0, 0, 0, 0.05);
 }
 
 .modal {
-  .close {
-    color: $text-color;
-  }
-}
 
-.popover {
-  color: $text-color;
+  .close {
+    color: $black;
+
+    &:not(:disabled):not(.disabled):hover,
+    &:not(:disabled):not(.disabled):focus {
+      color: $black;
+    }
+  }
 }
